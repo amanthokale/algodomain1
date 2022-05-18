@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
-import Topwear from './Topwear';
+import clothes from '../clothes.json';
 
 export default function App() {
+  const [cat, setcat] = useState('all');
+
+  const set = (a) => {
+    console.log(a);
+    setcat(a);
+  };
   return (
     <>
       <div className="head">
@@ -19,11 +25,10 @@ export default function App() {
 
       <div class="categories">
         <ul>
-          <li>Popular</li>
-          <li>Best sellers</li>
-          <li>Topwear</li>
-          <li>Bottomwear</li>
-          <li>Accessories</li>
+          <li onClick={(e) => set('all')}>All</li>
+          <li onClick={(e) => set('top')}>Topwear</li>
+          <li onClick={(e) => set('bottom')}>Bottomwear</li>
+          <li onClick={(e) => set('acc')}>Accessories</li>
         </ul>
       </div>
       <div className="bodysec">
@@ -38,7 +43,26 @@ export default function App() {
           </div>
         </div>
         <div id="products">
-          <Topwear />
+          <div className="json">
+            {clothes
+              .filter((val) => {
+                if (cat == 'all') {
+                  return val;
+                  s;
+                } else if (val.category == cat) {
+                  return val;
+                }
+              })
+              .map((val, key) => {
+                return (
+                  <div class="item">
+                    <img src={val.img} width="100" height="100" />
+                    <p class="cent bold">{val.name}</p>
+                    <h6 class="cent bold">${val.price}</h6>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
     </>

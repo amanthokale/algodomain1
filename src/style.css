@@ -159,3 +159,7 @@ h6:hover {
 .bold {
   font-weight: bold;
 }
+.json {
+  display: flex;
+  flex-wrap: wrap;
+}
