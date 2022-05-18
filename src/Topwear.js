@@ -8,13 +8,14 @@ export default function Topwear() {
   return (
     <>
       {clothes.map((val, key) => {
-        return <div>{val.id}</div>;
+        return (
+          <div class="item">
+            <img src={val.img} width="100" height="100" />
+            <p class="cent bold">JUICE WRLD T-SHIRT</p>
+            <h6 class="cent bold">$50.99</h6>
+          </div>
+        );
       })}
-      <div class="item">
-        <img src={img1} width="100" height="100" />
-        <p class="cent bold">JUICE WRLD T-SHIRT</p>
-        <h6 class="cent bold">$50.99</h6>
-      </div>
     </>
   );
 }
