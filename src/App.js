@@ -13,11 +13,11 @@ export default function App() {
   };
 
   const searchf = (a) => {
-    setcat('none');
+    setcat('s');
     setsearch(a);
   };
   const addfilter = (a) => {
-    setcat('none');
+    setcat('f');
   };
 
   return (
@@ -36,7 +36,6 @@ export default function App() {
             type="search"
             placeholder="Search for products"
           />
-          <input id="btn" type="button" value="search" />
         </div>
       </div>
 
@@ -103,11 +102,13 @@ export default function App() {
           <div className="json">
             {clothes
               .filter((val) => {
-                if (search === '') {
-                  return;
-                }
-                if (val.name.toLowerCase().includes(search.toLowerCase())) {
-                  return val;
+                if (cat == 's') {
+                  if (search === '') {
+                    return;
+                  }
+                  if (val.name.toLowerCase().includes(search.toLowerCase())) {
+                    return val;
+                  }
                 }
               })
               .map((val, key) => {
@@ -123,8 +124,10 @@ export default function App() {
           <div className="json">
             {clothes
               .filter((val) => {
-                if (val.price > l && val.price < r) {
-                  return val;
+                if (cat == 'f') {
+                  if (val.price > l && val.price < r) {
+                    return val;
+                  }
                 }
               })
               .map((val, key) => {
